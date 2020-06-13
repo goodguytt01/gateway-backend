@@ -1,0 +1,9 @@
+com/innovation/emall/common/service/datasource/DynamicDataSourceTransactionManager.class
+com/innovation/emall/common/service/dao/CrudDao.class
+com/innovation/emall/common/service/service/CrudService.class
+com/innovation/emall/common/service/datasource/DynamicPlugin.class
+com/innovation/emall/common/service/model/BaseDO.class
+com/innovation/emall/common/service/dao/BaseDao.class
+com/innovation/emall/common/service/datasource/DynamicDataSourceGlobal.class
+com/innovation/emall/common/service/datasource/DynamicDataSource.class
+com/innovation/emall/common/service/datasource/DynamicDataSourceHolder.class

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.innovation.emall.system.provider.mapper.AreaMapper">
+  <resultMap id="BaseResultMap" type="com.innovation.emall.system.provider.entity.Area">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="areaId" jdbcType="INTEGER" property="areaid" />
+    <result column="areaCode" jdbcType="VARCHAR" property="areacode" />
+    <result column="areaName" jdbcType="VARCHAR" property="areaname" />
+    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="cityCode" jdbcType="VARCHAR" property="citycode" />
+    <result column="center" jdbcType="VARCHAR" property="center" />
+    <result column="parentId" jdbcType="INTEGER" property="parentid" />
+  </resultMap>
+
+  <select id="getProvinces" resultType="com.innovation.emall.system.provider.entity.Area">
+        select * from tb_area where parentId = #{parentid}
+  </select>
+
+</mapper>

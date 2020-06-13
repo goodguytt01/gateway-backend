@@ -1,0 +1,33 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.innovation.emall.common.web.config.UploadConfig",
+      "name": "upload",
+      "sourceMethod": "diskFileOperator()",
+      "type": "com.innovation.emall.common.upload.DiskFileOperator"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.innovation.emall.common.upload.DiskFileOperator",
+      "name": "upload.access-url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.innovation.emall.common.upload.DiskFileOperator",
+      "name": "upload.access-url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.innovation.emall.common.upload.DiskFileOperator",
+      "name": "upload.work-folder-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.innovation.emall.common.upload.DiskFileOperator",
+      "name": "upload.work-folder-name",
+      "type": "java.lang.String"
+    }
+  ]
+}

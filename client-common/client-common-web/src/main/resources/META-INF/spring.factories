@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.innovation.emall.common.web.config.UploadConfig,\
+com.innovation.emall.common.web.config.WebConfig

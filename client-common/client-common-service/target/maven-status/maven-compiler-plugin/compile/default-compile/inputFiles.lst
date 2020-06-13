@@ -1,0 +1,9 @@
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/dao/BaseDao.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/datasource/DynamicDataSourceTransactionManager.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/dao/CrudDao.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/datasource/DynamicPlugin.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/datasource/DynamicDataSourceGlobal.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/model/BaseDO.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/service/CrudService.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/datasource/DynamicDataSourceHolder.java
+/Users/apple/work/gateway-backend/client-common/client-common-service/src/main/java/com/innovation/emall/common/service/datasource/DynamicDataSource.java
