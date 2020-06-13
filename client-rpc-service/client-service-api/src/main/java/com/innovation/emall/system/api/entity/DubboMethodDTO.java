@@ -6,6 +6,7 @@ import java.util.Date;
 public class DubboMethodDTO implements Serializable {
     private Long id;
 
+    private String url;
 
     private String parameterType;
 
@@ -123,5 +124,13 @@ public class DubboMethodDTO implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

@@ -8,14 +8,18 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializer;
 
 import com.innovation.emall.api.service.manager.DubboInterfaceManager;
+import com.innovation.emall.api.service.manager.DubboMethodManager;
 import com.innovation.emall.api.service.servlet.utils.DubboUtil;
 import com.innovation.emall.api.service.servlet.utils.HttpServletUtil;
 import com.innovation.emall.system.api.entity.DubboInterfaceDTO;
+import com.innovation.emall.system.api.entity.DubboMethodDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +32,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+@Component
 @WebServlet(name = "jlbGwDispatchServlet", urlPatterns = "/api/dubbo/*")
 public class JlbGwDispatchServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(JlbGwDispatchServlet.class);
@@ -37,19 +42,18 @@ public class JlbGwDispatchServlet extends HttpServlet {
             .create();
 
 
-    @Autowired
-    private HttpServletUtil servletUtil;
 
-    @Autowired
-    DubboInterfaceManager dubboInterfaceManager;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("GET the request uri [{}]", req.getRequestURI());
         }
+        WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+        DubboInterfaceManager dubboInterfaceManager = (DubboInterfaceManager)context.getBean("dubboInterfaceManager");
         // 分段获取jlbApi标签配置的domain和url值
-        DubboInterfaceDTO apiInfoResult = getApiInfo(req, resp);
+        DubboMethodDTO apiInfoResult = getApiInfo(req, resp);
+        DubboInterfaceDTO interfaceDTO = dubboInterfaceManager.getById(apiInfoResult.getInterfaceId());
         if ( apiInfoResult == null) {
             // 如果接口不存在（未上报).返回-99 errorCode.
             Map<String, String> result = new HashMap<>();
@@ -64,7 +68,7 @@ public class JlbGwDispatchServlet extends HttpServlet {
         DubboUtil dubboUtil = new DubboUtil();
         // 获取前端传递参数列表
         Map<String, String> parameters = HttpServletUtil.getReqParasGet(req);
-        GenericService genericService = dubboUtil.getGenericService(apiInfoResult);
+        GenericService genericService = dubboUtil.getGenericService(interfaceDTO);
         Object result = dubboUtil.genericCallRpc(genericService, apiInfoResult, parameters);
         writeResponse(resp, result);
     }
@@ -74,10 +78,15 @@ public class JlbGwDispatchServlet extends HttpServlet {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("POST the request uri [{}]", req.getRequestURI());
         }
-        DubboInterfaceDTO apiInfoResult = getApiInfo(req, resp);
+        WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+
+        DubboInterfaceManager dubboInterfaceManager = (DubboInterfaceManager)context.getBean("dubboInterfaceManager");
+        // 分段获取jlbApi标签配置的domain和url值
+        DubboMethodDTO apiInfoResult = getApiInfo(req, resp);
         // 根据查询到的接口信息配置泛化的接口信息。
         DubboUtil dubboUtil = new DubboUtil();
-        GenericService genericService = dubboUtil.getGenericService(apiInfoResult);
+        DubboInterfaceDTO interfaceDTO = dubboInterfaceManager.getById(apiInfoResult.getInterfaceId());
+        GenericService genericService = dubboUtil.getGenericService(interfaceDTO);
         BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream(), StandardCharsets.UTF_8));
         StringBuilder sb = new StringBuilder();
         String temp;
@@ -99,11 +108,13 @@ public class JlbGwDispatchServlet extends HttpServlet {
         writeResponse(resp, result);
     }
 
-    private DubboInterfaceDTO getApiInfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private DubboMethodDTO getApiInfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String[] urlParas = HttpServletUtil.getUrlPath(req);
-        DubboInterfaceDTO apiInfoDTO = new DubboInterfaceDTO();
-        apiInfoDTO.setUrl(urlParas[1]);
-        return dubboInterfaceManager.getUrl(apiInfoDTO);
+        DubboMethodDTO apiInfoDTO = new DubboMethodDTO();
+        WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+        DubboMethodManager dubboMethodManager = (DubboMethodManager)context.getBean("dubboMethodManager'");
+        // 分段获取jlbApi标签配置的domain和url值
+        return dubboMethodManager.getByUrl(urlParas[1]);
         // 查询domain和url值对应的接口信息
     }
 

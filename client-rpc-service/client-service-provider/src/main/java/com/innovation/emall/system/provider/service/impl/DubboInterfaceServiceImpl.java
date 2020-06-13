@@ -41,7 +41,6 @@ public class DubboInterfaceServiceImpl implements DubboInterfaceService {
     @Override
     public Result getUrl(DubboInterfaceDTO dubboInterfaceDTO) {
         DubboInterface dubboInterface = new DubboInterface();
-        BeanUtils.copyProperties(dubboInterfaceDTO,dubboInterface);
         BeanUtils.copyProperties(dubboInterfaceMapper.getUrl(dubboInterface),dubboInterfaceDTO);
         return Result.success(dubboInterfaceDTO);
     }

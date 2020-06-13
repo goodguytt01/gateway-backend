@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.innovation.emall.api.service.common.constants.ApiGatewayConstant;
 import com.innovation.emall.system.api.entity.DubboInterfaceDTO;
+import com.innovation.emall.system.api.entity.DubboMethodDTO;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -49,26 +50,26 @@ public class DubboUtil {
         return cache.get(reference);
     }
 
-    public Object invokeRemoteRpc(GenericService genericService, DubboInterfaceDTO apiInfoDTO, Object[] paras) {
+    public Object invokeRemoteRpc(GenericService genericService, DubboMethodDTO apiInfoDTO, Object[] paras) {
         Object obj;
         if (StringUtils.isEmpty(apiInfoDTO.getParameterName())) {
-            obj = genericService.$invoke(apiInfoDTO.getInterfaceAddr(),
+            obj = genericService.$invoke(apiInfoDTO.getMethodName(),
                     new String[]{},
                     new Object[]{});
         } else {
-            obj = genericService.$invoke(apiInfoDTO.getInterfaceAddr(),
+            obj = genericService.$invoke(apiInfoDTO.getMethodName(),
                     apiInfoDTO.getParameterType().split(ApiGatewayConstant.COMMA),
                     paras);
         }
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("Invoke dubbo api ({})[{}] from application [{}] result: {}", apiInfoDTO.getUrl(),
-                    apiInfoDTO.getUrl() + "#" + apiInfoDTO.getInterfaceAddr(), apiInfoDTO.getDomain(), JSON.toJSONString(obj));
+                    apiInfoDTO.getUrl() + "#" + apiInfoDTO.getMethodName(), JSON.toJSONString(obj));
         }
         return removeMapKeyIfClass(obj);
     }
 
     public Object genericCallRpc(GenericService genericService,
-                                 DubboInterfaceDTO apiInfoDTO, Map<String, String> reqParameters
+                                 DubboMethodDTO apiInfoDTO, Map<String, String> reqParameters
                                 ) {
         JSONObject allJson = new JSONObject();
         if (StringUtils.isEmpty(apiInfoDTO.getParameterName()) ||

@@ -61,4 +61,14 @@ public class DubboMethodManager {
             throw new BizException(result.getCode(),result.getMsg());
         }
     }
+
+
+    public DubboMethodDTO getByUrl(String url){
+        Result result = dubboInterfaceService.getByUrl(url);
+        if(result.success()){
+            return (DubboMethodDTO)result.getData();
+        }else{
+            throw new BizException(result.getCode(),result.getMsg());
+        }
+    }
 }

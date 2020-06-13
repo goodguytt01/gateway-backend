@@ -26,6 +26,15 @@ public class DubboInterfaceManager {
         }
     }
 
+    public DubboInterfaceDTO getById(Long id){
+        Result result = dubboInterfaceService.getById(id);
+        if(result.success()){
+            return (DubboInterfaceDTO)result.getData();
+        }else{
+            throw new BizException(result.getCode(),result.getMsg());
+        }
+    }
+
     public List<DubboInterfaceDTO> getList(){
         Result result = dubboInterfaceService.getList();
         if(result.success()){

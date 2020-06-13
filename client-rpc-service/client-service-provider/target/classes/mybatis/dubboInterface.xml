@@ -35,9 +35,7 @@
         select * from tb_dubbo_interface where  delete_flag = 0 and status = 0 and id = #{id}
   </select>
 
-    <select id="getUrl" resultType="com.innovation.emall.system.provider.entity.DubboInterface">
-        select * from tb_dubbo_interface where  delete_flag = 0 and url = #{url} and status = 0
-  </select>
+
 
 
     <update id="updateInterface" parameterType="com.innovation.emall.system.provider.entity.SecurityRole">

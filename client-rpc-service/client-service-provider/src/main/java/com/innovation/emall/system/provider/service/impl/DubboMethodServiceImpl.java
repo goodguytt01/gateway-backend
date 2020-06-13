@@ -50,6 +50,14 @@ public class  DubboMethodServiceImpl  implements DubboMethodService {
     }
 
     @Override
+    public Result getByUrl(String url) {
+        DubboMethod dubboMethod = dubboMethodMapper.getUrl(url);
+        DubboMethodDTO dubboMethodDTO = new DubboMethodDTO();
+        BeanUtils.copyProperties(dubboMethod,dubboMethodDTO);
+        return Result.success(dubboMethodDTO);
+    }
+
+    @Override
     public Result delete(DubboMethodDTO dubboMethodDTO) {
         DubboMethod dubboMethod = new DubboMethod();
         BeanUtils.copyProperties(dubboMethodDTO,dubboMethod);

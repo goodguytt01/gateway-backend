@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="common-service-common-upload" />
+        <module name="common-service-common-redis" />
+        <module name="common-service-common-service" />
+        <module name="client-api-service" />
+        <module name="common-service-common-utils" />
+        <module name="common-service-common-web" />
+        <module name="client-service-api" />
+        <module name="client-service-provider" />
+        <module name="common-service-common-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="client-api-service" target="1.8" />
+      <module name="client-common" target="1.8" />
+      <module name="client-rpc-service" target="1.8" />
+      <module name="client-service-api" target="1.8" />
+      <module name="client-service-provider" target="1.8" />
+      <module name="common-service-common-api" target="1.8" />
+      <module name="common-service-common-redis" target="1.8" />
+      <module name="common-service-common-service" target="1.8" />
+      <module name="common-service-common-upload" target="1.8" />
+      <module name="common-service-common-utils" target="1.8" />
+      <module name="common-service-common-web" target="1.8" />
+      <module name="common-service-parent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

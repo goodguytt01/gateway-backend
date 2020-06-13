@@ -9,6 +9,7 @@ public interface DubboMethodService {
     Result insert(DubboMethodDTO dubboMethod);
     Result getList(DubboMethodDTO dubboMethod);
     Result getById(Long id);
+    Result getByUrl(String url);
     Result delete(DubboMethodDTO dubboMethodDTO);
     Result updateStatus(DubboMethodDTO dubboMethodDTO);
 }

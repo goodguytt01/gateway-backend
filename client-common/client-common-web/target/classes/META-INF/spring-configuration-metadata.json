@@ -21,6 +21,16 @@
     },
     {
       "sourceType": "com.innovation.emall.common.upload.DiskFileOperator",
+      "name": "upload.access-url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.innovation.emall.common.upload.DiskFileOperator",
+      "name": "upload.work-folder-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.innovation.emall.common.upload.DiskFileOperator",
       "name": "upload.work-folder-name",
       "type": "java.lang.String"
     },
