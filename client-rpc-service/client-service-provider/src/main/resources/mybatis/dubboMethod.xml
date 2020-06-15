@@ -44,7 +44,7 @@
          where id = #{id}
   </update>
 
-    <select id="getUrl" resultType="com.innovation.emall.system.provider.entity.DubboInterface">
+    <select id="getUrl" resultType="com.innovation.emall.system.provider.entity.DubboMethod">
     select * from tb_dubbo_method where  delete_flag = 0 and url = #{url} and status = 0
 </select>
 </mapper>

@@ -8,6 +8,7 @@ import com.innovation.emall.system.api.entity.DubboMethodDTO;
 import com.innovation.emall.system.api.service.DubboInterfaceService;
 import com.innovation.emall.system.api.service.DubboMethodService;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

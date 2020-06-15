@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ public class DubboUtil {
         reference.setRetries(0);
         reference.setTimeout(5000);
         reference.setCluster("failfast");
-        reference.setInterface(apiInfoDTO.getUrl());
+        reference.setInterface(apiInfoDTO.getInterfaceAddr());
         reference.setGeneric(true);
         // 声明为泛化接口
         reference.setVersion("*");
@@ -57,9 +58,12 @@ public class DubboUtil {
                     new String[]{},
                     new Object[]{});
         } else {
+            Map<String, Object> person = new HashMap<String, Object>();
+            person.put("lawManType", "xxx");
+            person.put("lawManLicenceType", "yyy");
             obj = genericService.$invoke(apiInfoDTO.getMethodName(),
                     apiInfoDTO.getParameterType().split(ApiGatewayConstant.COMMA),
-                    paras);
+                    new Object[]{person});
         }
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("Invoke dubbo api ({})[{}] from application [{}] result: {}", apiInfoDTO.getUrl(),

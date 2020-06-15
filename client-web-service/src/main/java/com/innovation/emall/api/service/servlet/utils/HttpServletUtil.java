@@ -42,10 +42,10 @@ public class HttpServletUtil {
         String domain = ApiGatewayConstant.EMPTY_STR;
         String urlPart = ApiGatewayConstant.EMPTY_STR;
         for (int i = 0; i < parts.length; i++) {
-            if (i == 3) {
+            if (i == 4) {
                 domain = parts[i];
             }
-            if (i > 3) {
+            if (i > 4) {
                 urlPart = urlPart + ApiGatewayConstant.LEFT_SLASH + parts[i];
             }
         }

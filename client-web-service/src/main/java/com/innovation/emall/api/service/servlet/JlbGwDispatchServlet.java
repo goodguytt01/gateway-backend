@@ -112,7 +112,7 @@ public class JlbGwDispatchServlet extends HttpServlet {
         String[] urlParas = HttpServletUtil.getUrlPath(req);
         DubboMethodDTO apiInfoDTO = new DubboMethodDTO();
         WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        DubboMethodManager dubboMethodManager = (DubboMethodManager)context.getBean("dubboMethodManager'");
+        DubboMethodManager dubboMethodManager = (DubboMethodManager)context.getBean("dubboMethodManager");
         // 分段获取jlbApi标签配置的domain和url值
         return dubboMethodManager.getByUrl(urlParas[1]);
         // 查询domain和url值对应的接口信息
