@@ -9,17 +9,15 @@
         <module name="common-service-common-upload" />
         <module name="common-service-common-redis" />
         <module name="gateway-web-service" />
-        <module name="client-service-api" />
+        <module name="gateway-service-api" />
         <module name="common-service-common-utils" />
         <module name="common-service-common-web" />
         <module name="common-service-common-service" />
-        <module name="client-service-provider" />
+        <module name="gateway-service-provider" />
         <module name="common-service-common-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="client-service-api" target="1.8" />
-      <module name="client-service-provider" target="1.8" />
       <module name="common-service-common-api" target="1.8" />
       <module name="common-service-common-redis" target="1.8" />
       <module name="common-service-common-service" target="1.8" />
@@ -29,6 +27,8 @@
       <module name="gateway-backend" target="1.8" />
       <module name="gateway-common" target="1.8" />
       <module name="gateway-rpc-service" target="1.8" />
+      <module name="gateway-service-api" target="1.8" />
+      <module name="gateway-service-provider" target="1.8" />
       <module name="gateway-web-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
