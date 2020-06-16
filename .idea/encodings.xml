@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/client-common/client-common-api/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-common/client-common-redis/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-common/client-common-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-common/client-common-upload/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-common/client-common-utils/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-common/client-common-web/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-rpc-service/client-service-api/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-rpc-service/client-service-provider/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/client-web-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-common/client-common-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-common/client-common-redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-common/client-common-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-common/client-common-upload/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-common/client-common-utils/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-common/client-common-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-rpc-service/client-service-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-rpc-service/client-service-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-web-service/src/main/java" charset="UTF-8" />
   </component>
 </project>
