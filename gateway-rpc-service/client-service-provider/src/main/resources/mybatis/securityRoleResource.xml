@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.innovation.gateway.system.provider.mapper.SecurityRoleResourceMapper">
+  <resultMap id="BaseResultMap" type="com.innovation.gateway.system.provider.entity.SecurityRoleResource">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="resource_id" jdbcType="BIGINT" property="resourceId" />
+     <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
+    <result column="create_time"  property="createTime" />
+    <result column="delete_flag"  property="deleteFlag" />
+  </resultMap>
+
+  <insert id="insertSecurityRoleResource" parameterType="com.innovation.gateway.system.provider.entity.SecurityRoleResource" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_security_role_resource(role_id,resource_id,creator_id,create_time,delete_flag) values
+        (#(roleId},#{resourceId},#{creatorId},#{createTime},#{deleteFlag})
+  </insert>
+
+  <select id="getById" resultType="com.innovation.gateway.system.provider.entity.SecurityRoleResource">
+        select * from tb_security_role_Resource where id = #{id} and delete_flag = 0
+  </select>
+
+  <update id="updateSecurityRoleResource" parameterType="com.innovation.gateway.system.provider.entity.SecurityRoleResource">
+        update tb_security_role_resource set role_id=#(roleId},resource_id=#{resourceId},creator_id=#{creatorId},create_time=#{createTime},delete_flag=#{deleteFlag}
+         where id = #{id}
+  </update>
+
+    <update id="updateDeleteStatus" parameterType="com.innovation.gateway.system.provider.entity.SecurityRoleResource">
+        update tb_security_role_resource set delete_flag = #{deleteFlag}
+         where id = #{id}
+  </update>
+
+    <select id="searchList" resultType="com.innovation.gateway.system.provider.entity.SecurityRoleResource">
+        select * from tb_security_role_resource
+             where role_id = #{roleId}
+        order by create_time desc
+    </select>
+</mapper>

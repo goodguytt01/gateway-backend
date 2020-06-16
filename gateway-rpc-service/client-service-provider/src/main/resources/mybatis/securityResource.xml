@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.innovation.gateway.system.provider.mapper.SecurityResourceMapper">
+  <resultMap id="BaseResultMap" type="com.innovation.gateway.system.provider.entity.SecurityResource">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+     <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
+    <result column="create_time"  property="createTime" />
+    <result column="delete_flag"  property="deleteFlag" />
+  </resultMap>
+
+  <insert id="insertSecurityResource" parameterType="com.innovation.gateway.system.provider.entity.SecurityResource" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_security_resource(url,name,creator_id,create_time,delete_flag) values
+        (#{url},#{name},#{creatorId},#{createTime},#{deleteFlag})
+  </insert>
+
+  <select id="getById" resultType="com.innovation.gateway.system.provider.entity.SecurityResource">
+        select * from tb_security_resource where id = #{id} and delete_flag = 0
+  </select>
+
+  <update id="updateSecurityResource" parameterType="com.innovation.gateway.system.provider.entity.SecurityResource">
+        update tb_security_resource set url = #{url},name=#{name},creator_id=#{creatorId},create_time=#{createTime},delete_flag=#{deleteFlag}
+         where id = #{id}
+  </update>
+
+    <update id="updateDeleteStatus" parameterType="com.innovation.gateway.system.provider.entity.SecurityResource">
+        update tb_security_resource set delete_flag = #{deleteFlag}
+         where id = #{id}
+  </update>
+
+    <select id="searchList" resultType="com.innovation.gateway.system.provider.entity.SecurityResource">
+        select * from tb_security_resource   <where>
+        <if test="name!=null and name!=''">and name like CONCAT(CONCAT('%', #{name}), '%')</if>
+        <if test="url!=null and url!=''">and url like CONCAT(CONCAT('%', #{url}), '%')</if>
+    </where>
+    order by create_time desc
+  </select>
+</mapper>

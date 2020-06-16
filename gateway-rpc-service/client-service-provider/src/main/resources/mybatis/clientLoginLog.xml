@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.innovation.gateway.system.provider.mapper.ClientLoginLogMapper">
+  <resultMap id="BaseResultMap" type="com.innovation.gateway.system.provider.entity.ClientLoginLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="client_id" jdbcType="BIGINT" property="clientId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="channel" jdbcType="INTEGER" property="channel" />
+    <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
+    <result column="create_time"  property="createTime" />
+    <result column="delete_flag"  property="deleteFlag" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.innovation.gateway.system.provider.entity.ClientLoginLog">
+        insert into tb_login_log(client_id,type,channel,create_time,creator_id,delete_flag) values (#{clientId},#{type},#{channel},#{createTime},#{creatorId},#{deleteFlag})
+  </insert>
+
+</mapper>
