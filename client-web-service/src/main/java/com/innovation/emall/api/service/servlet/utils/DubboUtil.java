@@ -46,7 +46,7 @@ public class DubboUtil {
         reference.setInterface(apiInfoDTO.getInterfaceAddr());
         reference.setGeneric(true);
         // 声明为泛化接口
-        reference.setVersion("*");
+//        reference.setVersion("*");
         ReferenceConfigCache cache = ReferenceConfigCache.getCache();
         return cache.get(reference);
     }
@@ -59,8 +59,8 @@ public class DubboUtil {
                     new Object[]{});
         } else {
             Map<String, Object> person = new HashMap<String, Object>();
-            person.put("lawManType", "xxx");
-            person.put("lawManLicenceType", "yyy");
+            person.put("lawManType", "1");
+            person.put("lawManLicenceType", "1");
             obj = genericService.$invoke(apiInfoDTO.getMethodName(),
                     apiInfoDTO.getParameterType().split(ApiGatewayConstant.COMMA),
                     new Object[]{person});
