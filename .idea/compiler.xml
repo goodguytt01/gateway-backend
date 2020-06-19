@@ -1,35 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="common-service-common-upload" />
-        <module name="common-service-common-redis" />
-        <module name="gateway-web-service" />
-        <module name="gateway-service-api" />
-        <module name="common-service-common-utils" />
-        <module name="common-service-common-web" />
-        <module name="common-service-common-service" />
-        <module name="gateway-service-provider" />
-        <module name="common-service-common-api" />
-      </profile>
-    </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="common-service-common-api" target="1.8" />
-      <module name="common-service-common-redis" target="1.8" />
-      <module name="common-service-common-service" target="1.8" />
-      <module name="common-service-common-upload" target="1.8" />
-      <module name="common-service-common-utils" target="1.8" />
-      <module name="common-service-common-web" target="1.8" />
-      <module name="gateway-backend" target="1.8" />
-      <module name="gateway-common" target="1.8" />
-      <module name="gateway-rpc-service" target="1.8" />
-      <module name="gateway-service-api" target="1.8" />
-      <module name="gateway-service-provider" target="1.8" />
-      <module name="gateway-web-service" target="1.8" />
+      <module name="common-service-parent" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
