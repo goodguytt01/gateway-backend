@@ -3,16 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <artifactId>gateway-rpc-service</artifactId>
         <groupId>com.innovation.tech</groupId>
-        <artifactId>client-rpc-service</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>client-service-provider</artifactId>
+    <artifactId>gateway-service-provider</artifactId>
 
     <properties>
-        <start-class>com.innovation.gateway.system.provider.SysProviderApplication</start-class>
+        <start-class>com.innovation.emall.api.service.ClientMobileApplication</start-class>
     </properties>
 
     <profiles>
@@ -24,15 +24,17 @@
                 <!-- dubbo -->
                 <dubbo.container>logback,spring</dubbo.container>
                 <dubbo.shutdown.hook>true</dubbo.shutdown.hook>
-                <dubbo.application.name>client-system-provider</dubbo.application.name>
-                <dubbo.application.owner>zhangxudong</dubbo.application.owner>
+                <dubbo.application.name>emall-api-service</dubbo.application.name>
+                <dubbo.application.owner>edward</dubbo.application.owner>
                 <dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
                 <dubbo.registry.address>127.0.0.1:2181</dubbo.registry.address>
                 <dubbo.registry.client>curator</dubbo.registry.client>
-                <dubbo.protocol.dubbo.port>20000</dubbo.protocol.dubbo.port>
+                <dubbo.registry.file>tmp/client_mobile.cache</dubbo.registry.file>
                 <dubbo.application.logger>slf4j</dubbo.application.logger>
                 <dubbo.logback.level>info</dubbo.logback.level>
                 <dubbo.monitor.protocol> </dubbo.monitor.protocol>
+
+                <access.log.appender>STDOUT</access.log.appender>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -46,16 +48,17 @@
                 <!-- dubbo -->
                 <dubbo.container>logback,spring</dubbo.container>
                 <dubbo.shutdown.hook>true</dubbo.shutdown.hook>
-                <dubbo.application.name>client-system-provider</dubbo.application.name>
-                <dubbo.application.owner>zhangxudong</dubbo.application.owner>
+                <dubbo.application.name>emall-api-service</dubbo.application.name>
+                <dubbo.application.owner>edward</dubbo.application.owner>
                 <dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
                 <dubbo.registry.address>127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183</dubbo.registry.address>
                 <dubbo.registry.client>curator</dubbo.registry.client>
-                <dubbo.registry.file>/data/zookeeper/platform-system-provider.cache</dubbo.registry.file>
-                <dubbo.protocol.dubbo.port>20000</dubbo.protocol.dubbo.port>
+                <dubbo.registry.file>/data/zookeeper/client_mobile.cache</dubbo.registry.file>
                 <dubbo.application.logger>slf4j</dubbo.application.logger>
                 <dubbo.logback.level>error</dubbo.logback.level>
                 <dubbo.monitor.protocol>registry</dubbo.monitor.protocol>
+
+                <access.log.appender>FILE</access.log.appender>
             </properties>
         </profile>
         <profile>
@@ -66,13 +69,12 @@
                 <!-- dubbo -->
                 <dubbo.container>logback,spring</dubbo.container>
                 <dubbo.shutdown.hook>true</dubbo.shutdown.hook>
-                <dubbo.application.name>client-system-provider</dubbo.application.name>
-                <dubbo.application.owner>zhangxudong</dubbo.application.owner>
+                <dubbo.application.name>emall-api-service</dubbo.application.name>
+                <dubbo.application.owner>edward</dubbo.application.owner>
                 <dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
                 <dubbo.registry.address>127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183</dubbo.registry.address>
                 <dubbo.registry.client>curator</dubbo.registry.client>
-                <dubbo.registry.file>/data/zookeeper/platform-system-provider.cache</dubbo.registry.file>
-                <dubbo.protocol.dubbo.port>20000</dubbo.protocol.dubbo.port>
+                <dubbo.registry.file>/data/zookeeper/client_mobile.cache</dubbo.registry.file>
                 <dubbo.application.logger>slf4j</dubbo.application.logger>
                 <dubbo.logback.level>error</dubbo.logback.level>
                 <dubbo.monitor.protocol>registry</dubbo.monitor.protocol>
@@ -81,114 +83,63 @@
     </profiles>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.12</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency>
             <groupId>com.innovation.tech</groupId>
-            <artifactId>client-service-api</artifactId>
+            <artifactId>common-service-common-web</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.innovation.tech</groupId>
-            <artifactId>common-service-common-redis</artifactId>
+            <artifactId>gateway-service-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.innovation.tech</groupId>
-            <artifactId>common-service-common-service</artifactId>
+            <artifactId>gateway-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- Swagger -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>us.codecraft</groupId>
-            <artifactId>webmagic-core</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>us.codecraft</groupId>
-            <artifactId>webmagic-extension</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper</artifactId>
-            <version>4.0.4</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>emall-system-provider</finalName>
+        <finalName>emall-api-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
-                <configuration>
-                    <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
-                    <overwrite>true</overwrite>
-                    <verbose>true</verbose>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.12</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.freemarker</groupId>
-                        <artifactId>freemarker</artifactId>
-                        <version>2.3.23</version>
-                    </dependency>
-                    <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
-                    <dependency>
-                        <groupId>tk.mybatis</groupId>
-                        <artifactId>mapper</artifactId>
-                        <version>4.0.4</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>

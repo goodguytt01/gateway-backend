@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.innovation.tech</groupId>
-        <artifactId>client-rpc-service</artifactId>
+        <artifactId>gateway-rpc-service</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>client-service-api</artifactId>
+    <artifactId>gateway-service-api</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

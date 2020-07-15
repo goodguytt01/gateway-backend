@@ -27,7 +27,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.innovation.emall.system.provider.SysProviderApplication" level="INFO"/>
+    <logger name="com.innovation.gateway.system.provider.SysProviderApplication" level="INFO"/>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}.log</file>
@@ -41,7 +41,7 @@
     </appender>
 
     <springProfile name="local">
-        <logger name="com.innovation.emall.system.provider.SysProviderApplication" level="DEBUG"/>
+        <logger name="com.innovation.gateway.system.provider.SysProviderApplication" level="DEBUG"/>
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
         </root>
